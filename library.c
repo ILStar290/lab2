@@ -4,20 +4,20 @@
 
 double x = 0, y = 0;
 
-void task21()
+void task10()
 {
-    printf("Task: 21\n");
-    printf("z = e^x - x - 2 + (1 + x)^x\n");
+    printf("Task: 10\n");
+    printf("z = (1 + 1/x^2)^x - 12x^2y\n");
 
     double z = 0;
 
-    if (1 + x <= 0)
+    if (x == 0)
     {
         printf("Немає рішення");
     }
     else
     {
-        z = exp(x) - x - 2 + pow(1 + x, x);
+        z = pow(1 + 1 / (x * x), x) - 12 * x * x * y;
 
         printf("Z = %.2f", z);
     }
@@ -25,22 +25,22 @@ void task21()
     printf("\n\n");
 }
 
-void task25()
+void task17()
 {
-    printf("Task: 25\n");
-    printf("z = (1 + sin^2(x + y)) / (2 + |x - 2x / (1 + x^2y^2)|) + x\n");
+    printf("Task: 17\n");
+    printf("z = |ln(y - sqrt(|x|)) * (x - y / (x + x^2/4))|\n");
 
     double z = 0;
+    double denominator = x + (x * x) / 4;
 
-    double denominator = 2 + fabs(x - (2 * x) / (1 + x * x * y * y));
-
-    if (denominator == 0)
+    if (y - sqrt(fabs(x)) <= 0 || denominator == 0)
     {
-        printf("немає рішення");
+        printf("Немає рішення");
     }
     else
     {
-        z = (1 + pow(sin(x + y), 2)) / denominator + x;
+        z = fabs(log(y - sqrt(fabs(x))) *
+                 (x - y / denominator));
 
         printf("Z = %.2f", z);
     }
@@ -48,20 +48,38 @@ void task25()
     printf("\n\n");
 }
 
-void task44()
+void task34()
 {
-    printf("Task: 44\n");
-    printf("z = |3 - x / (5 - 7y)|\n");
+    printf("Task: 34\n");
+    printf("z = 3 * x * R / pi^3\n");
+
+    double R = 0, z = 0;
+
+    printf("Input R: ");
+    scanf("%lf", &R);
+
+    z = 3 * x * R / pow(acos(-1), 3);
+
+    printf("Z = %.2f", z);
+
+    printf("\n\n");
+}
+
+void task43()
+{
+    printf("Task: 43\n");
+    printf("z = (sqrt(x + 1) + sqrt(x - 1)) / (2 * sqrt(x))\n");
 
     double z = 0;
 
-    if (5 - 7 * y == 0)
+    if (x < 1)
     {
         printf("Немає рішення");
     }
     else
     {
-        z = fabs(3 - x / (5 - 7 * y));
+        z = (sqrt(x + 1) + sqrt(x - 1)) /
+            (2 * sqrt(x));
 
         printf("Z = %.2f", z);
     }
@@ -69,41 +87,21 @@ void task44()
     printf("\n\n");
 }
 
-void task22()
+void task47()
 {
-    printf("Task: 22\n");
-    printf("z = x * ln(x) + y / (cos(x) - x / 3)\n");
+    printf("Task: 47\n");
+    printf("z = (-x^2 + sqrt(x^2 - 4y^3)) / (2y)\n");
 
     double z = 0;
 
-    if (x <= 0 || cos(x) - x / 3 == 0)
+    if (y == 0 || x * x - 4 * y * y * y < 0)
     {
         printf("Немає рішення");
     }
     else
     {
-        z = x * log(x) + y / (cos(x) - x / 3);
-
-        printf("Z = %.2f", z);
-    }
-
-    printf("\n\n");
-}
-
-void task18()
-{
-    printf("Task: 18\n");
-    printf("z = e^x - (y^2 + 12xy - 3x^2) / (18y - 1)\n");
-
-    double z = 0;
-
-    if (18 * y - 1 == 0)
-    {
-        printf("Немає рішення");
-    }
-    else
-    {
-        z = exp(x) - (y * y + 12 * x * y - 3 * x * x) / (18 * y - 1);
+        z = (-x * x + sqrt(x * x - 4 * y * y * y)) /
+            (2 * y);
 
         printf("Z = %.2f", z);
     }
@@ -121,15 +119,15 @@ int main()
     printf("Input Y: ");
     scanf("%lf", &y);
 
-    task18();
+    task10();
 
-    task21();
+    task17();
 
-    task22();
+    task34();
 
-    task25();
+    task43();
 
-    task44();
+    task47();
 
     return 0;
 }
